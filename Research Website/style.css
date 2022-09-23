@@ -1,0 +1,49 @@
+/* Class CSS */
+
+.nb-bg-color {
+    background-color: #58004d;
+    transition: background-color 3s ease-out;
+}
+
+.nb-bg-color:hover {
+    background-color: #03aba8;
+    transition: background-color 3s ease-out;
+}
+
+
+
+
+/* ID CSS */
+
+a#nb-menu-item {
+    font-size: 25px;
+    padding: 0 20;
+}
+
+
+
+
+/* -----------------Underline Animation CSS -----------------*/
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    /*color: #0087ca;*/
+  }
+  
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #eae6e6;
+    /*transform-origin: bottom right;*/
+    transition: transform 0.35s ease-out;
+}
+  
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    /*transform-origin: bottom left;*/
+}

@@ -1,5 +1,45 @@
 /* Class CSS */
 
+.author {
+
+}
+
+.about-author {
+
+}
+
+ul {
+    list-style: none;
+}
+
+.step {
+    background-color: #fff;
+    transition: background-color 1s linear;
+}
+
+.step:hover {
+    background-color: #aad0e1;
+    transition: background-color 1s linear;
+}
+
+hr {
+    border: 3px;
+}
+
+
+.showcase {
+    background-color: #997594;
+}
+
+.overview {
+    background-color: #8ab2c5;
+}
+
+.icon-white {
+    color: #fff;
+}
+
+
 .nb-bg-color {
     background-color: #58004d;
     transition: background-color 3s ease-out;
@@ -8,6 +48,10 @@
 .nb-bg-color:hover {
     background-color: #03aba8;
     transition: background-color 3s ease-out;
+}
+
+.footer {
+    background-color: #58004d;
 }
 
 
@@ -20,6 +64,18 @@ a#nb-menu-item {
     padding: 0 20;
 }
 
+#ovPadLeft {
+    padding-left: 20px;
+}
+
+#ovPadRight {
+    padding-right: 20px;
+}
+
+div#about {
+    width: 400px;
+    margin: auto;
+}
 
 
 

@@ -1,13 +1,5 @@
 /* Class CSS */
 
-.author {
-
-}
-
-.about-author {
-
-}
-
 ul {
     list-style: none;
 }
@@ -33,6 +25,10 @@ hr {
 
 .overview {
     background-color: #8ab2c5;
+}
+
+.overview .border-color, .showcase .border-color {
+    border: 4px solid maroon;
 }
 
 .icon-white {

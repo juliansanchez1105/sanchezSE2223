@@ -1,7 +1,7 @@
 //Graph CSV data using chart.js
 
 async function getData(){
-    const response = await fetch('../data/results-data.csv');
+    const response = await fetch('data/results-data.csv');
     const data = await response.text(); //CSV --> Text File
 
     const xTime = []; //x-axis label = time values

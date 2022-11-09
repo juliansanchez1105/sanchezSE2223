@@ -1,4 +1,12 @@
 /* Class CSS */
+.blank-bg {
+    background-color: #997594;
+}
+
+.chart {
+    border-radius: 10px;
+    background-color: #fff;
+}
 
 .author {
     background-color: #b39db0;

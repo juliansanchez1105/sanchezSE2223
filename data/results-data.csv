@@ -1,0 +1,9 @@
+Time,Central Fan,Fan & Branches,Control,Central Fan + Bag,Fan & Branches + Bag
+1 - AM,0,0,0,2.1,
+1 - PM,0,0,0,0,
+2 - AM,0,0,0,1.2,0
+2 - PM,0,0,0,1,0.6
+3 - AM,0,0,0,0.9,0
+3 - PM,0,0,0,1.3,0
+4 - AM,0,0,0,0.1,0
+4 - PM,0,0,0,0.2,0

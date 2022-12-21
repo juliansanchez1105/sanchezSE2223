@@ -9,34 +9,41 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script type = "module" src="js/navbar.js" defer></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark nb-bg-color">
-        <div class="container-fluid">
-            <a href="index.html" class="navbar-brand"><img class="w-100" src="img/Leaf-Water-Drop-PNG-Picture.png" alt="Leaf with Water Droplets"></a>
+  <nav class="navbar navbar-expand-lg navbar-dark nb-bg-color">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand"><img class="w-100" src="img/Leaf-Water-Drop-PNG-Picture.png" alt="Leaf with Water Droplets"></a>
 
-            <!--Hamburger Menu Button-->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <!--Hamburger Menu Button-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!--Collapsible navbar with custom hover underline CSS animation-->
-            <div class="collapse navbar-collapse" id="navmenu">
-            <!--Links for hamburger menu button-->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="authors.html" class="nav-link hover-underline-animation" id="nb-menu-item">Author</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="procedure.html" class="nav-link hover-underline-animation" id="nb-menu-item">Procedure</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="results.html" class="nav-link hover-underline-animation" id="nb-menu-item">Results</a>
-                    </li>
-                </ul>
-            </div>
+        <!--Collapsible navbar with custom hover underline CSS animation-->
+        <div class="collapse navbar-collapse" id="navmenu">
+        <!--Links for hamburger menu button-->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a href="authors.html" class="nav-link hover-underline-animation" id="nb-menu-item">Author</a>
+            </li>
+            <li class="nav-item">
+                <a href="procedure.html" class="nav-link hover-underline-animation" id="nb-menu-item">Procedure</a>
+            </li>
+            <li class="nav-item">
+                <a href="results.html" class="nav-link hover-underline-animation" id="nb-menu-item">Results</a>
+            </li>
+            <li class="nav-item nbMenuItem">
+              <a  id="userLink" class="nav-link hover-underline-animation" href="home.html">User Link</a>
+            </li>
+            <li class="nav-item nbMenuItem">
+              <a  id="signInOut" class="nav-link hover-underline-animation" href="">Sign In</a>
+            </li>
+          </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!--Procedure Body-->
     <section class="procedure">

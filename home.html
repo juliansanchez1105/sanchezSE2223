@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Website</title>
+
+    <!-- Bootstrap 5 CSS, Icons and custom CSS file links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="signInStyle.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap 5, crypto-js and custom JS script tags-->
+    <!-- Include 'defer' keyword for each to improve loading-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" 
+            defer integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" 
+            defer integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type = "module" src="js/navbar.js" defer></script>
+    <script type = "module" src="js/home.js" defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark nb-bg-color">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand"><img class="w-100" src="img/Leaf-Water-Drop-PNG-Picture.png" alt="Leaf with Water Droplets"></a>
+
+            <!--Hamburger Menu Button-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Collapsible navbar with custom hover underline CSS animation-->
+            <div class="collapse navbar-collapse" id="navmenu">
+            <!--Links for hamburger menu button-->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="authors.html" class="nav-link hover-underline-animation" id="nb-menu-item">Author</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="procedure.html" class="nav-link hover-underline-animation" id="nb-menu-item">Procedure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="results.html" class="nav-link hover-underline-animation" id="nb-menu-item">Results</a>
+                    </li>
+                    <li class="nav-item nbMenuItem">
+                        <a  id="userLink" class="nav-link hover-underline-animation" href="home.html">User Link</a>
+                    </li>
+                    <li class="nav-item nbMenuItem">
+                        <a  id="signInOut" class="nav-link hover-underline-animation" href="">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <br><br>
+        <h1 id = "welcome"></h1><br><br>
+    </div>
+
+    <!--Firebase Data Operations -->
+    <!--Set and Update Data-->
+    <div class="container border">
+        <br><h2>Set & Update Data</h2><br>
+        <ol class="list-group list-group-numbered notes">
+            <li class="list-group-item border-0"><strong>Set</strong> - will completely overwrite all of the data stored at the node.</li>
+            <li class="list-group-item border-0"><strong>Update</strong> - will only replace the fields that have changed at the node, or add new fields if they aren't present</li>
+            <li class="list-group-item border-0">If you're collecting data from a sensor, you probably want to use update.</li>
+        </ol><br>
+        
+        <div class="container dataForm mb-5">
+            <form>
+                <select class="form-select mb-3" aria-label="Default select example" id="trial">
+                    <option selected>Trial</option>
+                    <option value="Central Fan">Central Fan</option>
+                    <option value="Fan & Branches">Fan & Branches</option>
+                    <option value="Control">Control</option>
+                    <option value="Central Fan + Bag">Central Fan + Bag</option>
+                    <option value="Fan & Branches + Bag">Fan & Branches + Bag</option>
+                </select>
+                <select class="form-select mb-3" aria-label="Default select example" id="day">
+                    <option selected>Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select class="form-select mb-3" aria-label="Default select example" id="time">
+                    <option selected>Time</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>    
+                </select>
+                <input type="text" class="form-control mb-3" placeholder="Water Volume (mL)" id="water">
+                <button type = "button" id="set" name="set" class="btn btn-outline-primary mb-3 w-100">Set</button>
+                <button type = "button" id="update" name="update" class="btn btn-outline-secondary mb-3 w-100">Update</button>
+            </form>       
+        </div>
+    </div><br>
+
+    <!--Get a single datum -->
+    <div class="container border">
+        <br><h2>Get a Datum (single data point)</h2><br>
+        <ol class="list-group list-group-numbered notes">
+            <li class="list-group-item border-0">Retrieve a single datum from a node and display it in a table.</li>
+        </ol><br>
+        
+        <div class="container dataForm mb-5">
+            <form>
+                <select class="form-select mb-3" aria-label="Default select example" id="getTrial">
+                    <option selected>Trial</option>
+                    <option value="Central Fan">Central Fan</option>
+                    <option value="Fan & Branches">Fan & Branches</option>
+                    <option value="Control">Control</option>
+                    <option value="Central Fan + Bag">Central Fan + Bag</option>
+                    <option value="Fan & Branches + Bag">Fan & Branches + Bag</option>
+                </select>
+                <select class="form-select mb-3" aria-label="Default select example" id="getDay">
+                    <option selected>Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select class="form-select mb-3" aria-label="Default select example" id="getTime">
+                    <option selected>Time</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>                                 
+                </select>
+                <button type = "button" id="get" name="get" class="btn btn-outline-primary mb-3 w-100">get</button>
+            </form>       
+        </div>
+
+        <!-- Table for displaying selected data -->
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Trial</th>
+                <th scope="col">Day</th>
+                <th scope="col">Time</th>
+                <th scope="col">Water Volume (mL)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><p id ="trialVal"></p></td>
+                <td><p id ="dayVal"></td>
+                <td><p id ="timeVal"></td>
+                <td><p id ="waterVal"></p></td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+    </div><br>
+
+    <!--Get a data set -->
+    <div class="container border">
+        <br><h2>Get a Data Set</h2><br>
+        <ol class="list-group list-group-numbered notes">
+            <li class="list-group-item border-0">Retrieve an entire day's set of data and display in a table</li>
+        </ol><br>
+        
+        <div class="container dataForm mb-5">
+            <form>
+                <select class="form-select mb-3" aria-label="Default select example" id="getSetTrial">
+                    <option selected>Trial</option>
+                    <option value="Central Fan">Central Fan</option>
+                    <option value="Fan & Branches">Fan & Branches</option>
+                    <option value="Control">Control</option>
+                    <option value="Central Fan + Bag">Central Fan + Bag</option>
+                    <option value="Fan & Branches + Bag">Fan & Branches + Bag</option>
+                </select>
+                <select class="form-select mb-3" aria-label="Default select example" id="getSetDay">
+                    <option selected>Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <button type = "button" id="getDataSet" name="getDataSet" class="btn btn-outline-primary mb-3 w-100">Get Dataset</button>
+            </form>       
+        </div>
+
+        <div>
+            <h5 id="setTrialVal"></h5>
+            <h5 id="setDayVal"></h5>
+        </div>
+
+        <!-- Table for displaying data set -->
+        <div class="container">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Water Volume (mL)</th>
+                </tr>
+                </thead>
+                <tbody id = "tbody-2">
+                </tbody>
+            </table>
+        </div>
+    </div><br>
+
+    </div><br>
+
+    <!--Delete Data-->
+    <div class="container border">
+        <br><h2>Delete Data</h2><br>
+        <ol class="list-group list-group-numbered notes">
+            <li class="list-group-item border-0">This function will allow you to delete a single time's data</li>
+            <li class="list-group-item border-0">To delete an entire day's data, you need to remove modify the directory path removing the 'time' part.</li>
+        </ol><br>
+        
+        <div class="container dataForm mb-5">
+            <form>
+                <select class="form-select mb-3" aria-label="Default select example" id="delTrial">
+                    <option selected>Trial</option>
+                    <option value="Central Fan">Central Fan</option>
+                    <option value="Fan & Branches">Fan & Branches</option>
+                    <option value="Control">Control</option>
+                    <option value="Central Fan + Bag">Central Fan + Bag</option>
+                    <option value="Fan & Branches + Bag">Fan & Branches + Bag</option>
+                </select>
+                <select class="form-select mb-3" aria-label="Default select example" id="delDay">
+                    <option selected>Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select class="form-select mb-3" aria-label="Default select example" id="delTime">
+                    <option selected>Time</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>                                 
+                </select>
+                <button type = "button" id="delete" name="delete" class="btn btn-outline-primary mb-3 w-100">Delete</button>
+            </form>       
+        </div>
+    </div><br>
+    <!--Footer (Requires BootStrap Icons)-->
+    <footer class="p-5 footer text-light text-center position-relative">
+        <div class="container">
+            <p class="lead">Copyright &copy; SE 2022 Research Website</p>
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h2 icon-white"></i>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

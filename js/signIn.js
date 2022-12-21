@@ -80,7 +80,8 @@ document.getElementById('signIn').onclick = function(){
 // ---------------- Keep User Logged In ----------------------------------//
 
 function stayLoggedIn(user){
-    let keepLoggedIn = document.getElementById('keepLoggedInSwitch').ariaChecked;
+    let keepLoggedIn = document.getElementById('keepLoggedInSwitch').checked;
+    console.log(keepLoggedIn);
 
     //Session storage is temporary (only active while browser open).
     //Information is saved as a string (must convert JS object to save).
@@ -89,11 +90,9 @@ function stayLoggedIn(user){
     if(!keepLoggedIn){
         sessionStorage.setItem('user', JSON.stringify(user));
         window.location = 'home.html';      //Browser redirect to homepage
-    }
-
-    //Local storage is more permenant (persists after browser closes)
-    //Is cleared with signOut() function
-    else{
+    } else{
+        //Local storage is more permenant (persists after browser closes)
+        //Is cleared with signOut() function
         localStorage.setItem('keepLoggedIn', 'yes')
         localStorage.setItem('user', JSON.stringify(user));
         window.location = 'home.html';      //Browser redirect to homepage
